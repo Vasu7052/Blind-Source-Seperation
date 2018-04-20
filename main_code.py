@@ -4,8 +4,8 @@ import pylab as pl
 from sklearn.decomposition import FastICA
 
 
-fs_1, voice_1 = wavfile.read("mix_type_1_1.wav")
-fs_2, voice_2 = wavfile.read("mix_type_1_2.wav")
+fs_1, voice_1 = wavfile.read("mix_type_2_1.wav")
+fs_2, voice_2 = wavfile.read("mix_type_2_2.wav")
 m, = voice_1.shape
 voice_2 = voice_2[:m]
 
@@ -41,4 +41,6 @@ pl.plot(S_)
 pl.title('ICA estimated sources')
 pl.subplots_adjust(0.09, 0.04, 0.94, 0.94, 0.26, 0.36)
 pl.show()
+
+
 

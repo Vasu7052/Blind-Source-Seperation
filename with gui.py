@@ -2,10 +2,11 @@ import sys
 from PyQt5.QtWidgets import QApplication, QWidget, QInputDialog, QLineEdit, QFileDialog, QPushButton, QMessageBox, QLabel
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import pyqtSlot
+from PyQt5 import QtCore
 
 from scipy.io import wavfile
 import numpy as np
-import pylab as pl
+import os
 from sklearn.decomposition import FastICA
 
 
@@ -32,10 +33,16 @@ class App(QWidget):
         button1.move(40, 70)
         button1.clicked.connect(self.on_click1)
 
+        #self.path1 = QLabel(self)
+        #self.path1.setGeometry(QtCore.QRect(40, 80, 5, 150))
+
         button2 = QPushButton('Choose Second Audio', self)
         button2.setToolTip('This is an example button')
         button2.move(160, 70)
         button2.clicked.connect(self.on_click2)
+
+        #self.path2 = QLabel(self)
+        #self.path2.move(160, 100)
 
         self.button3 = QPushButton('Start Processing', self)
         self.button3.setToolTip('This is an example button')
@@ -47,10 +54,13 @@ class App(QWidget):
     @pyqtSlot()
     def on_click1(self):
         self.audio1 = self.openChoose1()
+        #self.path1.setText(os.path.basename(self.audio1))
+
 
     @pyqtSlot()
     def on_click2(self):
         self.audio2 = self.openChoose2()
+        #self.path2.setText(os.path.basename(self.audio2))
 
     @pyqtSlot()
     def on_click3(self):
